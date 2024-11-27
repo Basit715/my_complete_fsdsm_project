@@ -26,3 +26,6 @@ Create one more file from the github itself called licence file and pull the sam
 
 
  Now create the init_setup.sh file for the automation of commands 
+
+
+ create template.py for the project setup files and automattion
