@@ -23,3 +23,6 @@ inside your project with the command
 
 Create one more file from the github itself called licence file and pull the same file to your project
 >> git pull
+
+
+ Now create the init_setup.sh file for the automation of commands 
