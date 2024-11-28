@@ -1,5 +1,4 @@
-
-
+from src.DiamondPricePrediction.logger import logging
 
 class DataIngestion:
      def __init__(self):
