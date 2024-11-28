@@ -14,7 +14,7 @@ from pathlib import Path
 
 class DataIngestionConfig:
           raw_data_path = os.path.join("artifacts", "raw.csv")
-          train_data_path = os.path.join("artifacts", "train.csv")
+          train_data_path = os.path.join("artifacts", "train1.csv")
           test_data_path = os.path.join("artifacts", "test.csv")
 
 class DataIngestion:

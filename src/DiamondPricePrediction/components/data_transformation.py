@@ -37,7 +37,7 @@ class DataTransformation:
                logging.info("pipeline initiated")
                num_pipeline = Pipeline(
                     steps=[
-                         ('impute', SimpleImputer(strategy='mean'))
+                         ('impute', SimpleImputer(strategy='mean')),
                          ('scaler', StandardScaler())
                     ]
                )
@@ -49,7 +49,7 @@ class DataTransformation:
                )
                
                preproccessor = ColumnTransformer(
-                    transformers=[
+                    [
                          ('numerical_pipeline', num_pipeline, num_cols),
                          ('categorical_pipeline', cat_pipeline, cat_cols)
                     ]
@@ -86,8 +86,8 @@ class DataTransformation:
                
                logging.info("Applying preproccesor object on train and test dataset")
                
-               train_arr = np._c[input_feature_train_arr, np.array(target_feature_train_df)]
-               test_arr = np._c[input_feature_test_arr, np.array(), np.array(target_feature_test_df)]
+               train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
+               test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
                
                
                
