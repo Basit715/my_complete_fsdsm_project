@@ -78,18 +78,31 @@ class DataTransformation:
                input_fetaure_train_df = train_df.drop(columns=drop_coloumns, axis=1)
                input_feature_test_df = test_df.drop(columns=drop_coloumns, axis=1)
                target_feature_train_df = train_df[target_coloum]
+               target_feature_test_df = test_df[target_coloum]
                
                
-               preprocceser_obj.fit_transform(input_fetaure_train_df)
-               preprocceser_obj.transform(input_feature_test_df)
+               input_feature_train_arr = preprocceser_obj.fit_transform(input_fetaure_train_df)
+               input_feature_test_arr = preprocceser_obj.transform(input_feature_test_df)
                
                logging.info("Applying preproccesor object on train and test dataset")
+               
+               train_arr = np._c[input_feature_train_arr, np.array(target_feature_train_df)]
+               test_arr = np._c[input_feature_test_arr, np.array(), np.array(target_feature_test_df)]
                
                
                
                save_object(
                     file_path = self.transformation_config.preproccessor_obj_path,
                     obj = preprocceser_obj
+               )
+               
+               
+               logging.info('preproccesing pickle file saved')
+               
+               
+               return (
+                    train_arr,
+                    test_arr
                )
                
           except Exception as e:
