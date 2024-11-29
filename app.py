@@ -10,16 +10,13 @@ def home_page():
 
 
 
-@app.route('/preict', methods=["GET", "POST"])
+@app.route("/predict", methods=["GET", "POST"])
 def predict_datapoints():
-     if request.method == "GET":
-          render_template('form.html')
+     if request.method=="GET":
+         return render_template('form.html')
           
      else:
-          data = customData(carat=float(request.form.get("carat")),
-            depth=float(request.form.get("depth")),
-            table=float(request.form.get("table")),
-            x=float(request.form.get("x")),
+          data = customData(carat=float(request.form.get("carat")),depth=float(request.form.get("depth")),table=float(request.form.get("table")),x=float(request.form.get("x")),
             y=float(request.form.get("y")),
             z=float(request.form.get("z")),
             cut=request.form.get("cut"),
@@ -37,5 +34,5 @@ def predict_datapoints():
           
           return render_template("result.html",final_result=result)
 
-
-app.run(debug=True)
+if __name__ == "__main__":
+     app.run(host="0.0.0.0",port=8000, debug=True)
