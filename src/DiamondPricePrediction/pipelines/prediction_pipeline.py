@@ -41,3 +41,26 @@ class customData:
           self.cut = cut
           self.color = color
           self.clarity = clarity
+          
+     def get_data_as_dataframe(self):
+          try:
+               custom_data_input_dict = {
+                    'carat':[self.carat],
+                    'depth':[self.depth],
+                    'table':[self.table],
+                    'x':[self.x],
+                    'y':[self.y],
+                    'z':[self.z],
+                    'cut':[self.cut],
+                    'color':[self.color],
+                    'clarity':[self.clarity]
+                    
+               }
+          
+               df = pd.DataFrame(custom_data_input_dict)
+               logging.info("dataframe gathered")
+               return df
+          except Exception as e:
+               logging.info("Exception occured during the gathering of dataframe")
+               raise customException(e,sys)
+          
